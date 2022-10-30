@@ -2,7 +2,9 @@ package me.xjqsh.lesraisinscore.rooms;
 
 import me.xjqsh.lesraisinscore.maps.LesMap;
 import me.xjqsh.lesraisinscore.modes.LesMode;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,12 @@ public class LesRoom {
     private LesMap map;
     private boolean isPlaying;
     private final List<String> playerList = new ArrayList<>();
-    private LesRoomManager panel;
+    private final Scoreboard scoreboard;
+
+    protected LesRoom(){
+        assert Bukkit.getScoreboardManager()!=null;
+        this.scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+    }
 
     public LesMode getMode() {
         return mode;
@@ -39,7 +46,13 @@ public class LesRoom {
     public void setPlaying(boolean isPlaying) {
         this.isPlaying = isPlaying;
     }
-    /**向房间添加玩家
+
+    public Scoreboard getScoreboard(){
+        return this.scoreboard;
+    }
+
+    /**向房间添加玩家,该方法应该由room manager调用
+     * @param player 玩家
      * @return true 如果添加成功；false 如果玩家为null或者已经在房间中
      * */
     protected boolean addPlayer(Player player){
@@ -47,7 +60,8 @@ public class LesRoom {
         playerList.add(player.getName());
         return true;
     }
-    /**从房间删除玩家
+    /**从房间删除玩家,该方法应该由room manager调用
+     * @param player 玩家
      * @return true 如果删除成功；false 如果玩家为null或者不在房间中
      * */
     protected boolean removePlayer(Player player){
