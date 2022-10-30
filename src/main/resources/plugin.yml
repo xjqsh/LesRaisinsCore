@@ -1,0 +1,6 @@
+name: LesRaisinsCore
+version: '${project.version}'
+main: me.xjqsh.lesraisinscore.LesRaisinsCore
+api-version: 1.16
+authors: [xjqsh]
+description: Core plugins for LesRaisins mini games server.

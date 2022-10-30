@@ -1,0 +1,10 @@
+config:
+  a: 1
+maps:
+  a:
+    display: "测试地图"
+    type: combat
+    combat:
+      spawn:
+        red:
+        blue:
