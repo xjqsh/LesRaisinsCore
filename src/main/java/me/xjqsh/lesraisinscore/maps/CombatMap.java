@@ -7,6 +7,7 @@ public class CombatMap extends LesMap{
     /**两队的复活点*/
     private Location respawnRed;
     private Location respawnBlue;
+    public static String mapType = "combat";
 
     protected CombatMap(int id,String name,Location red,Location blue){
         super(id,name);
