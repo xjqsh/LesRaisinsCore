@@ -14,6 +14,7 @@ public abstract class CombatMode extends LesMode {
     public CombatMode(LesRoom room){
         this.room=room;
         Scoreboard combatScoreboard = room.getScoreboard();
+        //为计分板初始化两个队伍
         ScoreboardTeam.register(combatScoreboard, ChatColor.RED);
         ScoreboardTeam.register(combatScoreboard, ChatColor.BLUE);
     }

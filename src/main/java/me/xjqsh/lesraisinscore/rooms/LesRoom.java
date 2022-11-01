@@ -50,7 +50,6 @@ public class LesRoom {
     public Scoreboard getScoreboard(){
         return this.scoreboard;
     }
-
     /**向房间添加玩家,该方法应该由room manager调用
      * @param player 玩家
      * @return true 如果添加成功；false 如果玩家为null或者已经在房间中
