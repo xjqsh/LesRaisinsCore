@@ -19,7 +19,3 @@ public class LesMapManager {
     }
 
 }
-
-enum mode{
-    combat
-}
