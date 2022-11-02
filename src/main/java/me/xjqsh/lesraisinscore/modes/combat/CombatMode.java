@@ -9,7 +9,7 @@ import org.bukkit.scoreboard.Scoreboard;
 public abstract class CombatMode extends LesMode {
     public static String mapType = "combat";
 
-    private LesRoom room;
+    protected final LesRoom room;
 
     public CombatMode(LesRoom room){
         this.room=room;

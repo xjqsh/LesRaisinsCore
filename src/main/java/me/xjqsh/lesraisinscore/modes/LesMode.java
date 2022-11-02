@@ -8,4 +8,7 @@ public abstract class LesMode {
     public abstract boolean start();
 
     public abstract boolean end();
+
+    public abstract boolean canStart();
+
 }

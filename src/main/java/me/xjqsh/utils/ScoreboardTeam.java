@@ -9,5 +9,6 @@ public class ScoreboardTeam {
     public static void register(Scoreboard scoreboard, ChatColor color){
         Team team = scoreboard.registerNewTeam(color.name());
         team.setColor(color);
+        team.setCanSeeFriendlyInvisibles(true);
     }
 }

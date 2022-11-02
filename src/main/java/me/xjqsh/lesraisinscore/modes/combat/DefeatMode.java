@@ -16,4 +16,9 @@ public class DefeatMode extends CombatMode{
     public boolean end() {
         return false;
     }
+
+    @Override
+    public boolean canStart() {
+        return false;
+    }
 }
