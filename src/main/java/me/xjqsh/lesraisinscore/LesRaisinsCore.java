@@ -12,7 +12,8 @@ public final class LesRaisinsCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
+        mapManager = new LesMapManager();
+        roomManager = new LesRoomManager();
     }
 
     @Override

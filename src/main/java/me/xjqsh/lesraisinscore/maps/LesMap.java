@@ -1,19 +1,18 @@
 package me.xjqsh.lesraisinscore.maps;
 
-import me.xjqsh.lesraisinscore.LesRaisinsCore;
-import org.bukkit.Location;
-
 /**最基础的地图类**/
 public abstract class LesMap {
     private final int mapID;
     private final String mapName;
     private boolean isAvailable;
+    public static String mapType;
 
     protected LesMap(int id, String name){
         this.mapID=id;
         this.mapName=name;
     }
 
+    public String getMapType(){return mapType;}
 
     public int getMapID(){
         return mapID;

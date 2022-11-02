@@ -4,7 +4,9 @@ import me.xjqsh.lesraisinscore.maps.LesMap;
 import me.xjqsh.lesraisinscore.modes.LesMode;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +17,12 @@ public class LesRoom {
     private boolean isPlaying;
     private final List<String> playerList = new ArrayList<>();
     private final Scoreboard scoreboard;
+    private final int id;
 
-    protected LesRoom(){
+    protected LesRoom(LesMode mode,LesMap map,int id){
         assert Bukkit.getScoreboardManager()!=null;
         this.scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+        this.id=id;
     }
 
     public LesMode getMode() {
@@ -67,5 +71,15 @@ public class LesRoom {
         if(player==null || !playerList.contains(player.getName()))return false;
         playerList.remove(player.getName());
         return true;
+    }
+
+    protected void unregister(){
+        mode.end();
+        map.setAvailable(true);
+        mode=null;
+        map=null;
+        playerList.clear();
+        for(Team team : scoreboard.getTeams())team.unregister();
+        for(Objective obj : scoreboard.getObjectives())obj.unregister();
     }
 }

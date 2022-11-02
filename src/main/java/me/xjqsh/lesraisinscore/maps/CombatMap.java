@@ -8,7 +8,7 @@ public class CombatMap extends LesMap{
     private Location respawnRed;
     private Location respawnBlue;
     public static String mapType = "combat";
-    /**应由map manager调用*/
+
     protected CombatMap(int id,String name,Location red,Location blue){
         super(id,name);
     }
@@ -29,7 +29,4 @@ public class CombatMap extends LesMap{
         this.respawnBlue = respawnBlue;
     }
 
-    public static LesMap register(int id,String name,Location red,Location blue) {
-        return null;
-    }
 }
