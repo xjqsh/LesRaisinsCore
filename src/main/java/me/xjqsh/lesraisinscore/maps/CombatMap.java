@@ -1,32 +1,28 @@
 package me.xjqsh.lesraisinscore.maps;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 
 /**两队对抗的地图*/
 public class CombatMap extends LesMap{
     /**两队的复活点*/
-    private Location respawnRed;
-    private Location respawnBlue;
-    public static String mapType = "combat";
+    private Map<ChatColor,Location> respawns;
 
-    protected CombatMap(int id,String name,Location red,Location blue){
+    protected CombatMap(int id, String name,@NotNull Location red,@NotNull Location blue){
         super(id,name);
     }
 
-    public Location getRespawnRed() {
-        return respawnRed;
+    public Location getRespawn(@NotNull ChatColor color) {
+        return respawns.get(color);
     }
 
-    public void setRespawnRed(Location respawnRed) {
-        this.respawnRed = respawnRed;
-    }
-
-    public Location getRespawnBlue() {
-        return respawnBlue;
-    }
-
-    public void setRespawnBlue(Location respawnBlue) {
-        this.respawnBlue = respawnBlue;
+    public boolean setRespawn(@NotNull Location respawn,@NotNull ChatColor color) {
+       if(!respawns.containsKey(color))return false;
+       respawns.replace(color,respawn);
+       return true;
     }
 
     @Override
