@@ -1,7 +1,6 @@
 package me.xjqsh.lesraisinscore.modes.combat;
 
 import me.xjqsh.lesraisinscore.maps.CombatMap;
-import me.xjqsh.lesraisinscore.maps.LesMap;
 import me.xjqsh.lesraisinscore.rooms.LesRoom;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import java.util.UUID;
 
 public class DefeatMode extends CombatMode{
     public DefeatMode(LesRoom room) {
@@ -31,6 +29,7 @@ public class DefeatMode extends CombatMode{
 
             player.teleport(map.getRespawn(color));
         }
+        //todo
         return true;
     }
 
