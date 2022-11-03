@@ -29,4 +29,8 @@ public class CombatMap extends LesMap{
         this.respawnBlue = respawnBlue;
     }
 
+    @Override
+    public String getMapType() {
+        return "combat";
+    }
 }

@@ -5,14 +5,13 @@ public abstract class LesMap {
     private final int mapID;
     private final String mapName;
     private boolean isAvailable;
-    public static String mapType;
 
     protected LesMap(int id, String name){
         this.mapID=id;
         this.mapName=name;
     }
 
-    public String getMapType(){return mapType;}
+    public abstract String getMapType();
 
     public int getMapID(){
         return mapID;
