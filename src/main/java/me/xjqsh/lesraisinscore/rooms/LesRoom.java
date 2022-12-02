@@ -19,7 +19,7 @@ public class LesRoom {
     private final Scoreboard scoreboard;
     private final int id;
 
-    protected LesRoom(LesMode mode,LesMap map,int id){
+    protected LesRoom(int id){
         assert Bukkit.getScoreboardManager()!=null;
         this.scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         this.id=id;

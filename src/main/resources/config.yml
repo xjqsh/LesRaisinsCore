@@ -1,10 +1,18 @@
 config:
   a: 1
 maps:
-  a:
-    display: "测试地图"
-    type: combat
-    combat:
+  combat:
+    a:
+      mapID: 1
+      display: "测试地图1"
+      world: world
       spawn:
-        red:
-        blue:
+        red: [0,100,0]
+        blue: [0,100,0]
+    b:
+      mapID: 2
+      display: "测试地图2"
+      world: world
+      spawn:
+        red: [0,120,0]
+        blue: [0,120,0]

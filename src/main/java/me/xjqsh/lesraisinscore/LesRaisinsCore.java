@@ -1,5 +1,6 @@
 package me.xjqsh.lesraisinscore;
 
+import me.xjqsh.lesraisinscore.commands.LesCommandExecutor;
 import me.xjqsh.lesraisinscore.maps.LesMapManager;
 import me.xjqsh.lesraisinscore.rooms.LesRoomManager;
 import org.bukkit.Bukkit;
@@ -14,6 +15,8 @@ public final class LesRaisinsCore extends JavaPlugin {
     public void onEnable() {
         mapManager = new LesMapManager();
         roomManager = new LesRoomManager();
+        //noinspection ConstantConditions
+        Bukkit.getPluginCommand("lesraisins").setExecutor(new LesCommandExecutor());
     }
 
     @Override

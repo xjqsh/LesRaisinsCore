@@ -10,9 +10,12 @@ import java.util.Map;
 
 /**房间的管理器,用于房间的统筹管理*/
 public class LesRoomManager {
-    private Map<Integer,LesRoom> rooms;
+    /**房间列表*/
+    private Map<Integer,LesRoom> roomList;
+    /**玩家对应的房间id*/
     private Map<String,Integer> players;
-    private int id=0;
+    /**下一个id*/
+    private int curID = 0;
     private final LesRaisinsCore plugin = LesRaisinsCore.getPlugin();
     /**向房间管理器注册一个新的房间
      * @param mode 房间的模式
@@ -21,28 +24,28 @@ public class LesRoomManager {
      * null 如果地图不可用或者超过房间上限或者模式与地图不匹配
      * */
     public synchronized LesRoom registerRoom(@NotNull LesMode mode, int mapID){
-        if(rooms.size()>2048)return null;
-        LesMap map = plugin.getMapManager().getMap(mapID);
-        if(map==null || !map.isAvailable() || !mode.mapType.equals(map.getMapType()))return null;
-        map.setAvailable(false);
-        LesRoom room = new LesRoom(mode,plugin.getMapManager().getMap(mapID),id);
-        rooms.put(id,room);
-        id++;
+        if(roomList.size()>2048)return null;
+//        LesMap map = plugin.getMapManager().getMap(mapID);
+//        if(map==null || !map.isAvailable() || !mode.mapType.equals(map.getMapType()))return null;
+//        map.setAvailable(false);
+        LesRoom room = new LesRoom(curID);
+        roomList.put(curID,room);
+        curID++;
         return room;
     }
 
     public boolean unregisterRoom(int roomID){
-        LesRoom room = rooms.get(roomID);
+        LesRoom room = roomList.get(roomID);
         if(room==null)return false;
         else{
             room.unregister();
-            rooms.remove(roomID);
+            roomList.remove(roomID);
             return true;
         }
     }
 
     public boolean addPlayer(int roomID, Player player){
-        LesRoom room = rooms.get(roomID);
+        LesRoom room = roomList.get(roomID);
         if(room==null || players.containsKey(player.getName()))return false;
         if(room.addPlayer(player)){
             players.put(player.getName(),roomID);
@@ -52,7 +55,7 @@ public class LesRoomManager {
 
     public boolean removePlayer(Player player){
         if(!players.containsKey(player.getName()))return false;
-        LesRoom room = rooms.get(players.get(player.getName()));
+        LesRoom room = roomList.get(players.get(player.getName()));
         if(room==null)return false;
         if(room.removePlayer(player)){
             players.remove(player.getName());

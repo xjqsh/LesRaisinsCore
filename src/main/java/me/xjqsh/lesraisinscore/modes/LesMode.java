@@ -1,13 +1,11 @@
 package me.xjqsh.lesraisinscore.modes;
 
-/**游戏模式，作为游戏流程控制器*/
-public abstract class LesMode {
+import me.xjqsh.lesraisinscore.rooms.LesRoom;
 
-    public String mapType;
-
-    public abstract boolean start();
-
-    public abstract boolean end();
-
+public abstract class LesMode{
+    protected LesRoom room;
+    public abstract void end();
     public abstract boolean canStart();
+    public abstract void start();
+    protected void unregister(){room=null;}
 }

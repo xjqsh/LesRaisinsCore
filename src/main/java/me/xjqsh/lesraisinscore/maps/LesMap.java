@@ -1,32 +1,20 @@
 package me.xjqsh.lesraisinscore.maps;
 
-/**最基础的地图类**/
 public abstract class LesMap {
     private final int mapID;
-    private final String mapName;
+    private String displayName;
     private boolean isAvailable;
 
-    protected LesMap(int id, String name){
-        this.mapID=id;
-        this.mapName=name;
-    }
-
-    public abstract String getMapType();
-
-    public int getMapID(){
-        return mapID;
-    }
-
-    public String getMapName() {
-        return mapName;
+    public LesMap(int mapID,String displayName){
+        this.mapID=mapID;
+        this.displayName=displayName;
     }
 
     public boolean isAvailable() {
         return isAvailable;
     }
 
-    public void setAvailable(boolean status) {
-        isAvailable = status;
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
-
 }
