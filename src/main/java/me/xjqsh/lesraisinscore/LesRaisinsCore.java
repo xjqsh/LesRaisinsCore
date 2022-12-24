@@ -1,21 +1,17 @@
 package me.xjqsh.lesraisinscore;
 
-import me.xjqsh.lesraisinscore.commands.LesCommandExecutor;
-import me.xjqsh.lesraisinscore.maps.LesMapManager;
-import me.xjqsh.lesraisinscore.rooms.LesRoomManager;
+import me.xjqsh.lesraisinscore.command.LesCommandExecutor;
+import me.xjqsh.limit.LesLimit;
+import me.xjqsh.teamchat.TeamChat;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class LesRaisinsCore extends JavaPlugin {
-
-    private LesRoomManager roomManager;
-    private LesMapManager mapManager;
+public final class LesRaisinsCore extends JavaPlugin{
 
     @Override
     public void onEnable() {
-        mapManager = new LesMapManager();
-        roomManager = new LesRoomManager();
-        //noinspection ConstantConditions
+        Bukkit.getPluginManager().registerEvents(new TeamChat(),this);
+        Bukkit.getPluginManager().registerEvents(new LesLimit(),this);
         Bukkit.getPluginCommand("lesraisins").setExecutor(new LesCommandExecutor());
     }
 
@@ -24,15 +20,8 @@ public final class LesRaisinsCore extends JavaPlugin {
 
     }
 
-    public static LesRaisinsCore getPlugin(){
+    public static LesRaisinsCore plugin(){
         return (LesRaisinsCore)Bukkit.getPluginManager().getPlugin("LesRaisinsCore");
     }
 
-    public LesRoomManager getRoomManager(){
-        return this.roomManager;
-    }
-
-    public LesMapManager getMapManager(){
-        return this.mapManager;
-    }
 }
